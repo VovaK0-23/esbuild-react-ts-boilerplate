@@ -81,7 +81,7 @@ Before you begin, make sure you have the following prerequisites installed:
    </html>
    ```
 
-## # Step 9: Add Optional Files
+### Step 9: Add Optional Files
 1. Optionally, you can add a `favicon.ico` file and a `manifest.json` file to the `public` directory.
  
 ### Step 10: Create Esbuild Configuration
