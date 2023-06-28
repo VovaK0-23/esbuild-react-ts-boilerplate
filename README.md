@@ -61,6 +61,7 @@ Before you begin, make sure you have the following prerequisites installed:
 ### Step 8: Add Public Files
 1. Create an `index.html` file inside the `public` directory.
 2. Add the following HTML code to the `index.html` file:
+
    ```html
    <!doctype html>
    <html lang="en">
@@ -72,78 +73,79 @@ Before you begin, make sure you have the following prerequisites installed:
        <link rel="manifest" href="/manifest.json" />
        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
        <script type="module" src="./build/bundle.js"></script>
-     </head>
+       </head>
      <body>
-       <noscript>You need to enable JavaScript to run this app.</noscript>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
        <div id="root"></div>
-     </body>
+      </body>
    </html>
    ```
 
-### Step 9: Add Optional Files
+## # Step 9: Add Optional Files
 1. Optionally, you can add a `favicon.ico` file and a `manifest.json` file to the `public` directory.
-
+ 
 ### Step 10: Create Esbuild Configuration
-1. Create an `esbuild.config.js` file in the project's root directory.
+1.  Create an `esbuild.config.js` file in the project's root directory.
 2. Add the following JavaScript code to the `esbuild.config.js` file:
-   ```js
-import esbuild from 'esbuild';
-import dotenv from 'dotenv';
 
-dotenv.config();
-const args = process.argv;
-
-const config = {
-  logLevel: 'info',
-  entryPoints: ['src/index.ts'],
-  outfile: 'public/build/bundle.js',
-  bundle: true,
-  define: {
-    'process.env.NODE_ENV': JSON.stringify(
-      process.env.NODE_ENV || 'production'
-    ),
-  },
-};
-
-if (args.includes('--build')) {
-  esbuild
-    .build({
-      ...config,
-      minify: true,
-      sourcemap: false,
-    })
-    .catch(e => {
-      console.error(e);
-      process.exit(1);
-    });
-}
-
-if (args.includes('--start')) {
-  esbuild
-    .context({
-      ...config,
-      minify: false,
-      sourcemap: true,
-    })
-    .then(async ctx => {
-      await ctx.watch(); // this is needed only if live reloading will be used
-      await ctx.serve({
-        servedir: 'public',
-        onRequest: ({ remoteAddress, method, path, status, timeInMS }) => {
-          console.info(
-            remoteAddress,
-            status,
-            `"${method} ${path}" [${timeInMS}ms]`
-          );
-        },
-      });
-    })
-    .catch(e => {
-      console.error(e);
-      process.exit(1);
-    });
-}
-```
+   ~~~js
+   import esbuild from 'esbuild';
+   import dotenv from 'dotenv';
+   
+   dotenv.config();
+   const args = process.argv;
+   
+   const config = {
+     logLevel: 'info',
+     entryPoints: ['src/index.ts'],
+     outfile: 'public/build/bundle.js',
+     bundle: true,
+     define: {
+       'process.env.NODE_ENV': JSON.stringify(
+         process.env.NODE_ENV || 'production'
+       ),
+     },
+   };
+   
+   if (args.includes('--build')) {
+     esbuild
+       .build({
+         ...config,
+         minify: true,
+         sourcemap: false,
+       })
+       .catch(e => {
+         console.error(e);
+         process.exit(1);
+       });
+   }
+   
+   if (args.includes('--start')) {
+     esbuild
+       .context({
+         ...config,
+         minify: false,
+         sourcemap: true,
+       })
+       .then(async ctx => {
+        await ctx.watch(); // this is needed only if live reloading will be used
+         await ctx.serve({
+          servedir: 'public',
+           onRequest: ({ remoteAddress, method, path, status, timeInMS }) => {
+            console.info(
+               remoteAddress,
+              status,
+               `"${method} ${path}" [${timeInMS}ms]`
+            );
+           },
+        });
+       })
+      .catch(e => {
+         console.error(e);
+        process.exit(1);
+       });
+   }
+   ~~~
 
 ### Step 11: Enable Live Reloading (Optional)
 1. Open the entry file (src/index.ts) in your code editor.
