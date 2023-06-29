@@ -1,5 +1,39 @@
 # Step-by-Step Tutorial: Setting up React + Esbuild + Typescript Project
 
+Table of Contents
+
+Table of Contents
+
+1. [Project Setup](#project-setup)
+   1.1 [Prerequisites](#prerequisites)
+   1.2 [Install Node.js](#step-2-install-nodejs)
+   1.3 [Install Yarn](#step-3-install-yarn)
+   1.4 [Initialize the Project](#step-4-initialize-the-project)
+   1.5 [Install Dependencies](#step-5-install-dependencies)
+   1.6 [Configure Gitignore](#step-6-configure-gitignore)
+   1.7 [Configure TypeScript](#step-7-configure-typescript)
+   1.8 [Create Public Directory](#step-8-create-public-directory)
+   1.9 [Add Public Files](#step-9-add-public-files)
+   1.10 [Add Optional Files](#step-10-add-optional-files)
+   1.11 [Create Esbuild Configuration](#step-11-create-esbuild-configuration)
+   1.12 [Enable Live Reloading (Optional)](#step-12-enable-live-reloading-optional)
+   1.13 [Create Environment Variables File](#step-13-create-environment-variables-file)
+   1.14 [Update Package.json](#step-14-update-package-json)
+   1.15 [Run the Project](#step-15-run-the-project)
+
+2. [Test Suite Setup](#test-suite-setup)
+   2.1 [Install Packages](#step-1-install-packages)
+   2.2 [Add Jest Config](#step-2-add-jest-config)
+   2.3 [Add Tests Setup File](#step-3-add-tests-setup-file)
+   2.4 [Add Scripts to Package.json](#step-4-add-scripts-to-package-json)
+
+3. [Linter and Formatter Setup](#linter-and-formatter-setup)
+   3.1 [Install Packages](#step-1-install-packages)
+   3.2 [Add ESLint Config](#step-2-add-eslint-config)
+   3.3 [Add Prettier Config](#step-3-add-prettier-config)
+   3.4 [Add Paths to tsconfig.json (Optional)](#step-4-add-paths-to-tsconfig-json-optional)
+   3.5 [Add Scripts to Package.json](#step-5-add-scripts-to-package-json)
+
 ## Project setup
 
 ### Prerequisites
