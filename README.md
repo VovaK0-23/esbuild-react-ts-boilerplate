@@ -27,7 +27,7 @@ Table of Contents
    1. [Install Packages](#step-1-install-packages)
    2. [Add Jest Config](#step-2-add-jest-config)
    3. [Add Tests Setup File](#step-3-add-tests-setup-file)
-   4. [Add Scripts to Package.json](#step-4-add-scripts-to-package-json)
+   4. [Add Scripts to Package.json](#step-4-optional-add-paths-to-tsconfigjson)
 
 3. [Linter and Formatter Setup](#linter-and-formatter-setup)
 
