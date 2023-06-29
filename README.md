@@ -309,20 +309,20 @@ Congratulations! You have successfully set up a React + Esbuild + Typescript pro
 
 1. Install the following packages using Yarn:
 
-   - `eslint`: Code quality tool to catch bugs.
-   - `eslint-plugin-compat`: Plugin to lint the browser compatibility of your code.
-   - `eslint-plugin-react`: ESLint support for React.
-   - `eslint-config-prettier`: Config extension to remove conflicts between ESLint and Prettier.
-   - `@typescript-eslint/eslint-plugin` and `@typescript-eslint/parser`: ESLint support for TypeScript.
-   - `prettier`: Code formatter to make code style consistent.
-   - (Optional) `@trivago/prettier-plugin-sort-imports`: Plugin for Prettier to automatically sort imports.
+- `eslint`: Code quality tool to catch bugs.
+- `eslint-plugin-compat`: Plugin to lint the browser compatibility of your code.
+- `eslint-plugin-react`: ESLint support for React.
+- `eslint-config-prettier`: Config extension to remove conflicts between ESLint and Prettier.
+- `@typescript-eslint/eslint-plugin` and `@typescript-eslint/parser`: ESLint support for TypeScript.
+- `prettier`: Code formatter to make code style consistent.
+- (Optional) `@trivago/prettier-plugin-sort-imports`: Plugin for Prettier to automatically sort imports.
 
-   ```shell
-   yarn add -D eslint \
-   eslint-plugin-compat eslint-plugin-react eslint-config-prettier \
-   @typescript-eslint/eslint-plugin @typescript-eslint/parser \
-   prettier @trivago/prettier-plugin-sort-imports
-   ```
+  ```shell
+  yarn add -D eslint \
+  eslint-plugin-compat eslint-plugin-react eslint-config-prettier \
+  @typescript-eslint/eslint-plugin @typescript-eslint/parser \
+  prettier @trivago/prettier-plugin-sort-imports
+  ```
 
 ### Step 2: Add eslint config
 
