@@ -12,10 +12,13 @@ Before you begin, make sure you have the following prerequisites installed:
 
 1. Open your terminal.
 2. Install the latest LTS version of Node.js using nvm by running the following command:
+
    ```shell
    nvm install --lts
    ```
+
 3. Create an .nvmrc file in your project's root directory and add the installed Node.js version to it by running the following command:
+
    ```shell
    node --version > .nvmrc
    ```
@@ -23,6 +26,7 @@ Before you begin, make sure you have the following prerequisites installed:
 ### Step 2: Install Yarn
 
 1. Install Yarn globally by running the following command:
+
    ```shell
    npm -g install yarn
    ```
@@ -32,26 +36,33 @@ Before you begin, make sure you have the following prerequisites installed:
 1. Create a new directory for your project.
 2. Navigate to the project's root directory in the terminal.
 3. Initialize a new private project using Yarn by running the following command:
+
    ```shell
    yarn init -yp
    ```
+
 4. Edit the generated `package.json` file as needed. For example, you can remove the `"main"` field if you won't be publishing the package, change the `"license"`, etc.
 
 ### Step 4: Install Dependencies
 
 1. Install the necessary packages for React, Esbuild, Typescript, and other required dependencies by running the following command:
+
    ```shell
    yarn add esbuild react react-dom dotenv typescript
    ```
+
 2. Install type definitions for React and React DOM as dev dependencies by running the following command:
+
    ```shell
    yarn add -D @types/react @types/react-dom
    ```
+
 3. Run `yarn install`
 
 ### Step 5: Configure Gitignore
 
 1. Add following lines to `.gitignore`
+
    ```shell
    *.log
    .env
@@ -64,6 +75,7 @@ Before you begin, make sure you have the following prerequisites installed:
 ### Step 6: Configure TypeScript
 
 1. Initialize the `tsconfig.json` file by running the following command:
+
    ```shell
    yarn run tsc --init --rootDir src --jsx react --module es6 --moduleResolution node --noEmit true
    ```
@@ -162,6 +174,7 @@ Before you begin, make sure you have the following prerequisites installed:
 
 1. Open the entry file (src/index.ts) in your code editor.
 2. Add the following line of code at the beginning of the file:
+
    ```ts
    declare const NODE_ENV: string;
    if (NODE_ENV === 'development')
@@ -172,6 +185,7 @@ Before you begin, make sure you have the following prerequisites installed:
 
 1. Create a `.env` file in the project's root directory.
 2. Add the following content to the `.env` file:
+
    ```env
    NODE_ENV=development
    ```
@@ -180,10 +194,13 @@ Before you begin, make sure you have the following prerequisites installed:
 
 1. Open the `package.json` file in your code editor.
 2. Change the `"type"` field to `"module"` to enable ECMAScript modules:
+
    ```json
    "type": "module",
    ```
+
 3. Add the following scripts to the `"scripts"` section of the `package.json` file:
+
    ```json
    "scripts": {
      "build": "node esbuild.config.js --build",
@@ -196,9 +213,11 @@ Before you begin, make sure you have the following prerequisites installed:
 1. Open your terminal.
 2. Navigate to the project's root directory.
 3. Start the project by running the following command:
+
    ```shell
    yarn start
    ```
+
 4. The project should now be running, and you can view it in your browser at the specified URL.
 
 Congratulations! You have successfully set up a React + Esbuild + Typescript project. You can now start developing your application using this setup.
@@ -215,64 +234,64 @@ Congratulations! You have successfully set up a React + Esbuild + Typescript pro
 - `esbuild-jest`: A Jest transformer that compiles JSX and TypeScript in test files, leveraging the fast esbuild bundler.
 - `jest-environment-jsdom`: Provides a JSDOM environment for Jest, allowing tests to interact with the DOM.
 
-```shell
-yarn add -D jest \
-@testing-library/jest-dom @testing-library/react @testing-library/user-event \
-@types/jest esbuild-jest \
-jest-environment-jsdom
-```
+  ```shell
+  yarn add -D jest \
+  @testing-library/jest-dom @testing-library/react @testing-library/user-event \
+  @types/jest esbuild-jest \
+  jest-environment-jsdom
+  ```
 
 ### Step 2: Add jest config
 
 1. Create `jest.config.js`
 
-```js
-/*
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
+   ```js
+   /*
+    * For a detailed explanation regarding each configuration property, visit:
+    * https://jestjs.io/docs/configuration
+    */
 
-export default {
-  // Stop running tests after `n` failures
-  bail: 1,
-  // Automatically clear mock calls, instances, contexts and results before every test
-  clearMocks: true,
-  // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
-  // The directory where Jest should output its coverage files
-  coverageDirectory: 'coverage',
-  // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
-  // The root directory that Jest should scan for tests and modules within
-  // rootDir: undefined,
-  // A list of paths to directories that Jest should use to search for files in
-  roots: ['src'],
-  // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
-  // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
-  // The number of seconds after which a test is considered as slow and reported as such in the results.
-  slowTestThreshold: 5,
-  // A list of paths to snapshot serializer modules Jest should use for snapshot testing
-  // snapshotSerializers: [],
-  // The test environment that will be used for testing
-  testEnvironment: 'jsdom',
-  // A map from regular expressions to paths to transformers
-  transform: {
-    '^.+\\.tsx?$': 'esbuild-jest',
-    '^.+\\.ts?$': 'esbuild-jest',
-  },
-};
-```
+   export default {
+     // Stop running tests after `n` failures
+     bail: 1,
+     // Automatically clear mock calls, instances, contexts and results before every test
+     clearMocks: true,
+     // Indicates whether the coverage information should be collected while executing the test
+     collectCoverage: true,
+     // The directory where Jest should output its coverage files
+     coverageDirectory: 'coverage',
+     // Indicates which provider should be used to instrument code for coverage
+     coverageProvider: 'v8',
+     // The root directory that Jest should scan for tests and modules within
+     // rootDir: undefined,
+     // A list of paths to directories that Jest should use to search for files in
+     roots: ['src'],
+     // The paths to modules that run some code to configure or set up the testing environment before each test
+     // setupFiles: [],
+     // A list of paths to modules that run some code to configure or set up the testing framework before each test
+     setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+     // The number of seconds after which a test is considered as slow and reported as such in the results.
+     slowTestThreshold: 5,
+     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
+     // snapshotSerializers: [],
+     // The test environment that will be used for testing
+     testEnvironment: 'jsdom',
+     // A map from regular expressions to paths to transformers
+     transform: {
+       '^.+\\.tsx?$': 'esbuild-jest',
+       '^.+\\.ts?$': 'esbuild-jest',
+     },
+   };
+   ```
 
 ### Step 3: Add tests setup file
 
 1. Create `src/setupTests.ts`
 
-```js
-// to expand availiable matchers in tests
-import '@testing-library/jest-dom';
-```
+   ```js
+   // to expand availiable matchers in tests
+   import '@testing-library/jest-dom';
+   ```
 
 ### Step 4: Add scripts to `package.json`
 
