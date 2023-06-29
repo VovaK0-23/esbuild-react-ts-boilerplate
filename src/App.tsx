@@ -1,11 +1,11 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
 import { useCallback, useState } from 'react';
+import { createRoot } from 'react-dom/client';
 
 const App = (props: { message: string }) => {
   const [count, setCount] = useState(0);
   const increment = useCallback(() => {
-    setCount(count => count + 1);
+    setCount((count) => count + 1);
   }, [count]);
   return (
     <>
@@ -16,6 +16,9 @@ const App = (props: { message: string }) => {
   );
 };
 
-createRoot(document.getElementById('root')!).render(
-  <App message='Hello World! A Counter App built on ESBuild + React + Typescript' />
-);
+const rootElem = document.getElementById('root');
+if (rootElem)
+  createRoot(rootElem).render(
+    <App message='Hello World! A Counter App built on ESBuild + React + Typescript' />
+  );
+else alert('Cannot find element with id "root", something went wrong');

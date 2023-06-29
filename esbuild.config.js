@@ -1,5 +1,6 @@
-import esbuild from 'esbuild';
 import dotenv from 'dotenv';
+import esbuild from 'esbuild';
+import process from 'node:process';
 
 dotenv.config();
 const args = process.argv;
@@ -10,9 +11,7 @@ const config = {
   outfile: 'public/build/bundle.js',
   bundle: true,
   define: {
-    'process.env.NODE_ENV': JSON.stringify(
-      process.env.NODE_ENV || 'production'
-    ),
+    NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'),
   },
 };
 
@@ -23,7 +22,7 @@ if (args.includes('--build')) {
       minify: true,
       sourcemap: false,
     })
-    .catch(e => {
+    .catch((e) => {
       console.error(e);
       process.exit(1);
     });
@@ -36,20 +35,16 @@ if (args.includes('--start')) {
       minify: false,
       sourcemap: true,
     })
-    .then(async ctx => {
+    .then(async (ctx) => {
       await ctx.watch();
       await ctx.serve({
         servedir: 'public',
         onRequest: ({ remoteAddress, method, path, status, timeInMS }) => {
-          console.info(
-            remoteAddress,
-            status,
-            `"${method} ${path}" [${timeInMS}ms]`
-          );
+          console.info(remoteAddress, status, `"${method} ${path}" [${timeInMS}ms]`);
         },
       });
     })
-    .catch(e => {
+    .catch((e) => {
       console.error(e);
       process.exit(1);
     });

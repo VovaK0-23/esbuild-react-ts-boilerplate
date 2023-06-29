@@ -12,11 +12,21 @@
     "typescript": "^5.1.5"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6"
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-compat": "^4.1.4",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "^2.8.8"
   },
   "scripts": {
+    "start": "node esbuild.config.js --start",
     "build": "node esbuild.config.js --build",
-    "start": "node esbuild.config.js --start"
+    "fmt": "prettier --write",
+    "lint": "eslint --fix"
   }
 }

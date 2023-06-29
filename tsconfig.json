@@ -5,12 +5,17 @@
 
     "module": "es6",
     "rootDir": "src",
+    "baseUrl": "src",
 
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
     "strict": true,
 
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    "paths": {
+      "@/*": ["*"]
+    }
   }
 }
