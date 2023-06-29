@@ -4,6 +4,7 @@
     "jsx": "react",
 
     "module": "es6",
+    "moduleResolution": "node",
     "rootDir": "src",
     "baseUrl": "src",
 

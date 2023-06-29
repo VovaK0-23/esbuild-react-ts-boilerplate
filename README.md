@@ -1,5 +1,7 @@
 # Step-by-Step Tutorial: Setting up React + Esbuild + Typescript Project
 
+## Project setup
+
 ### Prerequisites
 
 Before you begin, make sure you have the following prerequisites installed:
@@ -51,8 +53,10 @@ Before you begin, make sure you have the following prerequisites installed:
 
 1. Add following lines to `.gitignore`
    ```shell
-   node_modules
+   *.log
    .env
+   coverage
+   node_modules
    public/build/
    !public/build/.keep
    ```
@@ -61,7 +65,7 @@ Before you begin, make sure you have the following prerequisites installed:
 
 1. Initialize the `tsconfig.json` file by running the following command:
    ```shell
-   yarn run tsc --init --rootDir src --jsx react --module es6 --noEmit true
+   yarn run tsc --init --rootDir src --jsx react --module es6 --moduleResolution node --noEmit true
    ```
 
 ### Step 7: Create Public Directory
@@ -198,6 +202,87 @@ Before you begin, make sure you have the following prerequisites installed:
 4. The project should now be running, and you can view it in your browser at the specified URL.
 
 Congratulations! You have successfully set up a React + Esbuild + Typescript project. You can now start developing your application using this setup.
+
+## Test suite Setup
+
+### Step 1: Install packages
+
+- `jest`: A JavaScript testing framework used for writing and executing tests.
+- `@testing-library/jest-dom`: Provides additional matchers and utilities for testing DOM-related behavior in Jest.
+- `@testing-library/react`: Offers utilities for testing React components using the Testing Library approach.
+- `@testing-library/user-event`: Allows simulating user events in React components during testing.
+- `@types/jest`: TypeScript type definitions for Jest, ensuring accurate type information.
+- `esbuild-jest`: A Jest transformer that compiles JSX and TypeScript in test files, leveraging the fast esbuild bundler.
+- `jest-environment-jsdom`: Provides a JSDOM environment for Jest, allowing tests to interact with the DOM.
+
+```shell
+yarn add -D jest \
+@testing-library/jest-dom @testing-library/react @testing-library/user-event \
+@types/jest esbuild-jest \
+jest-environment-jsdom
+```
+
+### Step 2: Add jest config
+
+1. Create `jest.config.js`
+
+```js
+/*
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://jestjs.io/docs/configuration
+ */
+
+export default {
+  // Stop running tests after `n` failures
+  bail: 1,
+  // Automatically clear mock calls, instances, contexts and results before every test
+  clearMocks: true,
+  // Indicates whether the coverage information should be collected while executing the test
+  collectCoverage: true,
+  // The directory where Jest should output its coverage files
+  coverageDirectory: 'coverage',
+  // Indicates which provider should be used to instrument code for coverage
+  coverageProvider: 'v8',
+  // The root directory that Jest should scan for tests and modules within
+  // rootDir: undefined,
+  // A list of paths to directories that Jest should use to search for files in
+  roots: ['src'],
+  // The paths to modules that run some code to configure or set up the testing environment before each test
+  // setupFiles: [],
+  // A list of paths to modules that run some code to configure or set up the testing framework before each test
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  // The number of seconds after which a test is considered as slow and reported as such in the results.
+  slowTestThreshold: 5,
+  // A list of paths to snapshot serializer modules Jest should use for snapshot testing
+  // snapshotSerializers: [],
+  // The test environment that will be used for testing
+  testEnvironment: 'jsdom',
+  // A map from regular expressions to paths to transformers
+  transform: {
+    '^.+\\.tsx?$': 'esbuild-jest',
+    '^.+\\.ts?$': 'esbuild-jest',
+  },
+};
+```
+
+### Step 3: Add tests setup file
+
+1. Create `src/setupTests.ts`
+
+```js
+// to expand availiable matchers in tests
+import '@testing-library/jest-dom';
+```
+
+### Step 4: Add scripts to `package.json`
+
+1. Update your `package.json` file and add the following scripts:
+
+   ```json
+   "scripts": {
+     "test": "jest --watch"
+   }
+   ```
 
 ## Linter and Formatter Setup
 
