@@ -12,12 +12,9 @@ module.exports = {
   ],
   overrides: [
     {
+      files: ['./*.{js,cjs}'],
       env: {
         node: true,
-      },
-      files: ['.eslintrc.{js,cjs}'],
-      parserOptions: {
-        sourceType: 'script',
       },
     },
   ],
@@ -27,7 +24,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'react', 'compat'],
-  ignorePatterns: ['public/build/*'],
+  ignorePatterns: ['public/*'],
   settings: {
     react: {
       version: 'detect',

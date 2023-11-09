@@ -4,35 +4,48 @@
  */
 
 export default {
-  // Stop running tests after `n` failures
-  bail: 1,
-  // Automatically clear mock calls, instances, contexts and results before every test
+  bail: !process.argv.includes('--selectProjects') ? 10 : process.argv.includes('lint') ? 0 : 1,
+
+  reporters: process.argv.includes('test')
+    ? ['default']
+    : [['jest-silent-reporter', { showWarnings: true }]],
+
   clearMocks: true,
-  // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
-  // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
-  // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
-  // The root directory that Jest should scan for tests and modules within
-  // rootDir: undefined,
-  // A list of paths to directories that Jest should use to search for files in
-  roots: [
-    "src"
+  coverageReporters: ['lcov'],
+  collectCoverageFrom: ['./src/**/*.{js,jsx,ts,tsx}'],
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
+
+  projects: [
+    {
+      displayName: 'test',
+
+      rootDir: '<rootDir>',
+      // setupFiles: [],
+      setupFilesAfterEnv: ['<rootDir>/tests/setupTests.ts'],
+      slowTestThreshold: 5,
+      // snapshotSerializers: [],
+      testEnvironment: 'jsdom',
+
+      moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
+
+      transform: {
+        '^.+\\.(tsx|ts)?$': 'esbuild-jest',
+      },
+    },
+    {
+      displayName: 'lint',
+
+      runner: 'eslint',
+
+      rootDir: '.',
+      testMatch: ['**/*.[jt]s?(x)'],
+      testPathIgnorePatterns: ['/coverage/', '/public/'],
+
+      transform: {
+        '^.+\\.(tsx|ts)?$': 'esbuild-jest',
+      },
+    },
   ],
-  // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
-  // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
-  // The number of seconds after which a test is considered as slow and reported as such in the results.
-  slowTestThreshold: 5,
-  // A list of paths to snapshot serializer modules Jest should use for snapshot testing
-  // snapshotSerializers: [],
-  // The test environment that will be used for testing
-  testEnvironment: "jsdom",
-  // A map from regular expressions to paths to transformers
-  "transform": {
-    "^.+\\.tsx?$": "esbuild-jest",
-    "^.+\\.ts?$": "esbuild-jest"
-  }
 };

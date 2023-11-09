@@ -2,25 +2,22 @@
 
 Table of Contents
 
-Table of Contents
-
 1. [Project Setup](#project-setup)
 
    1. [Prerequisites](#prerequisites)
    2. [Install Node.js](#step-1-install-nodejs)
-   3. [Install Yarn](#step-2-install-yarn)
-   4. [Initialize the Project](#step-3-initialize-the-project)
-   5. [Install Dependencies](#step-4-install-dependencies)
-   6. [Configure Gitignore](#step-5-configure-gitignore)
-   7. [Configure TypeScript](#step-6-configure-typescript)
-   8. [Create Public Directory](#step-7-create-public-directory)
-   9. [Add Public Files](#step-8-add-public-files)
-   10. [Add Optional Files](#step-9-add-optional-files)
-   11. [Create Esbuild Configuration](#step-10-create-esbuild-configuration)
-   12. [Enable Live Reloading (Optional)](#step-11-enable-live-reloading-optional)
-   13. [Create Environment Variables File](#step-12-create-environment-variables-file)
-   14. [Update Package.json](#step-13-update-package-json)
-   15. [Run the Project](#step-14-run-the-project)
+   3. [Initialize the Project](#step-2-initialize-the-project)
+   4. [Install Dependencies](#step-3-install-dependencies)
+   5. [Configure Gitignore](#step-4-configure-gitignore)
+   6. [Configure TypeScript](#step-5-configure-typescript)
+   7. [Create Public Directory](#step-6-create-public-directory)
+   8. [Add Public Files](#step-7-add-public-files)
+   9. [Add Optional Files](#step-8-add-optional-files)
+   10. [Create Esbuild Configuration](#step-9-create-esbuild-configuration)
+   11. [Enable Live Reloading (Optional)](#step-10-enable-live-reloading-optional)
+   12. [Create Environment Variables File](#step-11-create-environment-variables-file)
+   13. [Update Package.json](#step-12-update-package-json)
+   14. [Run the Project](#step-13-run-the-project)
 
 2. [Test Suite Setup](#test-suite-setup)
 
@@ -60,43 +57,35 @@ Before you begin, make sure you have the following prerequisites installed:
    node --version > .nvmrc
    ```
 
-### Step 2: Install Yarn
-
-1. Install Yarn globally by running the following command:
-
-   ```shell
-   npm -g install yarn
-   ```
-
-### Step 3: Initialize the Project
+### Step 2: Initialize the Project
 
 1. Create a new directory for your project.
 2. Navigate to the project's root directory in the terminal.
-3. Initialize a new private project using Yarn by running the following command:
+3. Initialize a new private project using Npm by running the following command:
 
    ```shell
-   yarn init -yp
+   npm init -yp
    ```
 
 4. Edit the generated `package.json` file as needed. For example, you can remove the `"main"` field if you won't be publishing the package, change the `"license"`, etc.
 
-### Step 4: Install Dependencies
+### Step 3: Install Dependencies
 
 1. Install the necessary packages for React, Esbuild, Typescript, and other required dependencies by running the following command:
 
    ```shell
-   yarn add esbuild react react-dom dotenv typescript
+   npm install esbuild react react-dom dotenv typescript
    ```
 
 2. Install type definitions for React and React DOM as dev dependencies by running the following command:
 
    ```shell
-   yarn add -D @types/react @types/react-dom
+   npm install --save-dev @types/react @types/react-dom
    ```
 
-3. Run `yarn install`
+3. Run `npm install`
 
-### Step 5: Configure Gitignore
+### Step 4: Configure Gitignore
 
 1. Add following lines to `.gitignore`
 
@@ -109,19 +98,19 @@ Before you begin, make sure you have the following prerequisites installed:
    !public/build/.keep
    ```
 
-### Step 6: Configure TypeScript
+### Step 5: Configure TypeScript
 
 1. Initialize the `tsconfig.json` file by running the following command:
 
    ```shell
-   yarn run tsc --init --rootDir src --jsx react --module es6 --moduleResolution node --noEmit true
+   npx tsc --init --rootDir src --jsx react --module es6 --moduleResolution node --noEmit true
    ```
 
-### Step 7: Create Public Directory
+### Step 6: Create Public Directory
 
 1. Create a `public` directory in the project's root directory.
 
-### Step 8: Add Public Files
+### Step 7: Add Public Files
 
 1. Create an `index.html` file inside the `public` directory.
 2. Add the following HTML code to the `index.html` file:
@@ -145,11 +134,11 @@ Before you begin, make sure you have the following prerequisites installed:
    </html>
    ```
 
-### Step 9: Add Optional Files
+### Step 8: Add Optional Files
 
 1. Optionally, you can add a `favicon.ico` file and a `manifest.json` file to the `public` directory.
 
-### Step 10: Create Esbuild Configuration
+### Step 9: Create Esbuild Configuration
 
 1.  Create an `esbuild.config.js` file in the project's root directory.
 2.  Add the following JavaScript code to the `esbuild.config.js` file:
@@ -207,7 +196,7 @@ Before you begin, make sure you have the following prerequisites installed:
     }
     ```
 
-### Step 11: Enable Live Reloading (Optional)
+### Step 10: Enable Live Reloading (Optional)
 
 1. Open the entry file (src/index.ts) in your code editor.
 2. Add the following line of code at the beginning of the file:
@@ -218,7 +207,7 @@ Before you begin, make sure you have the following prerequisites installed:
      new EventSource('/esbuild').addEventListener('change', () => location.reload());
    ```
 
-### Step 12: Create Environment Variables File
+### Step 11: Create Environment Variables File
 
 1. Create a `.env` file in the project's root directory.
 2. Add the following content to the `.env` file:
@@ -227,7 +216,7 @@ Before you begin, make sure you have the following prerequisites installed:
    NODE_ENV=development
    ```
 
-### Step 13: Update Package.json
+### Step 12: Update Package.json
 
 1. Open the `package.json` file in your code editor.
 2. Change the `"type"` field to `"module"` to enable ECMAScript modules:
@@ -245,7 +234,7 @@ Before you begin, make sure you have the following prerequisites installed:
    },
    ```
 
-### Step 14: Run the Project
+### Step 13: Run the Project
 
 1. Open your terminal.
 2. Navigate to the project's root directory.
@@ -344,7 +333,7 @@ Congratulations! You have successfully set up a React + Esbuild + Typescript pro
 
 ### Step 1: Install packages
 
-1. Install the following packages using Yarn:
+1. Install the following packages using Npm:
 
 - `eslint`: Code quality tool to catch bugs.
 - `eslint-plugin-compat`: Plugin to lint the browser compatibility of your code.
@@ -355,7 +344,7 @@ Congratulations! You have successfully set up a React + Esbuild + Typescript pro
 - (Optional) `@trivago/prettier-plugin-sort-imports`: Plugin for Prettier to automatically sort imports.
 
   ```shell
-  yarn add -D eslint \
+  npm install --save-dev eslint \
   eslint-plugin-compat eslint-plugin-react eslint-config-prettier \
   @typescript-eslint/eslint-plugin @typescript-eslint/parser \
   prettier @trivago/prettier-plugin-sort-imports
@@ -453,13 +442,13 @@ Usage:
 - Run ESLint and automatically fix linting issues:
 
   ```shell
-  yarn lint .
-  yarn lint <filepath>
+  npm run lint .
+  npm run lint <filepath>
   ```
 
 - Format your code using Prettier:
 
   ```shell
-  yarn fmt .
-  yarn fmt <filepath>
+  npm run fmt .
+  npm run fmt <filepath>
   ```

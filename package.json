@@ -21,20 +21,26 @@
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
+    "concurrently": "^8.2.0",
     "esbuild-jest": "^0.5.0",
-    "eslint": "^8.43.0",
+    "eslint": "^8.53.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-compat": "^4.1.4",
     "eslint-plugin-react": "^7.32.2",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
+    "jest-silent-reporter": "^0.5.0",
     "prettier": "^2.8.8"
   },
   "scripts": {
+    "dev": "concurrently -k -n 'build' -c 'auto' 'npm start' 'npm:watch:*'",
     "start": "node esbuild.config.js --start",
     "build": "node esbuild.config.js --build",
-    "test": "jest --watch",
-    "fmt": "prettier --write",
-    "lint": "eslint --fix"
+    "test": "jest --selectProjects test",
+    "lint": "jest --selectProjects lint",
+    "watch:test": "npm test -- --watch",
+    "watch:lint": "npm run lint -- --watch",
+    "watch:tsc": "tsc --pretty --watch",
+    "fmt": "prettier --write"
   }
 }

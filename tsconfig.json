@@ -1,19 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es6",
     "jsx": "react",
 
-    "module": "es6",
     "moduleResolution": "node",
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": "src",
-
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
 
     "strict": true,
 
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+
+    "noEmit": true,
+
     "skipLibCheck": true,
+
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
 
     "paths": {
       "@/*": ["*"]
